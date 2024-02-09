@@ -19,6 +19,21 @@ public class PlaceService {
     public List<Place> findAllPlaces(){
         return placeRepository.findAll();
     }
+
+    public ResponseEntity<?> findAndUpdatePLcae(Integer id, Place place){
+        Place placeAModifier = placeRepository.findById(id).orElseGet(null);
+        if(placeAModifier != null){
+            if(place.getName() != null){
+                placeAModifier.setName(place.getName());
+            }
+            if (place.getAddress() != null){
+                placeAModifier.setAddress(place.getAddress());
+            }
+            placeRepository.save(placeAModifier);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
     public void savePlace(Place place){
         placeRepository.save(place);
     }

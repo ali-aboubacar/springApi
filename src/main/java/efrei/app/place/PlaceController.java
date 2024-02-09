@@ -24,6 +24,11 @@ public class PlaceController {
     public List<Place> getAllPLaces(){
         return placeService.findAllPlaces();
     }
+    @PutMapping("/{placeId}")
+    public ResponseEntity<?> updatePlace(@PathVariable Integer placeId,
+                                         @RequestBody Place place){
+        return placeService.findAndUpdatePLcae(placeId,place);
+    }
     @PostMapping
     public void createPlace(@RequestBody Place place){
         placeService.savePlace(place);
