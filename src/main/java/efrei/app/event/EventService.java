@@ -1,6 +1,8 @@
 package efrei.app.event;
 
 import efrei.app.place.Place;
+import efrei.app.place.PlaceRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -9,8 +11,10 @@ import java.util.List;
 
 @Service
 public class EventService {
+    @Autowired
     private EventRepository eventRepository;
-
+    @Autowired
+    private PlaceRepository placeRepository;
     public Event getEventById(Integer id){
         return eventRepository.findById(id).orElse(null);
     }
@@ -18,8 +22,15 @@ public class EventService {
     public List<Event> findAllEvents(){
         return eventRepository.findAll();
     }
-    public void saveEvent(Event event){
-        eventRepository.save(event);
+    public ResponseEntity<?> saveEvent(Event event){
+        try{
+            Place savedPLace = placeRepository.save(event.getPlace());
+            event.setPlace(savedPLace);
+            eventRepository.save(event);
+            return ResponseEntity.ok("Event created successfuly");
+        } catch (RuntimeException e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
 

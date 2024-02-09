@@ -15,7 +15,7 @@ public class EventController {
     @Autowired
     private EventService eventService;
     @PostMapping
-    public void createEvent(@Valid @RequestBody Event event){
+    public void createEvent(@RequestBody Event event){
         eventService.saveEvent(event);
     }
 
