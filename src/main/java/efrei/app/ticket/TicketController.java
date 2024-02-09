@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -25,6 +26,10 @@ public class TicketController {
         this.eventService = eventService;
     }
 
+    @GetMapping
+    public List<Ticket> getAllTIckects(){
+        return ticketService.findAllTickets();
+    }
     @PostMapping("/buy")
     public ResponseEntity<String> buyTicket(@RequestParam Integer userId,
                                             @RequestParam Integer eventId){

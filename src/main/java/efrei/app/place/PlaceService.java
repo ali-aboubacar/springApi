@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PlaceService {
     @Autowired
@@ -12,6 +14,10 @@ public class PlaceService {
 
     public Place getPlaceById(Integer id){
         return placeRepository.findById(id).orElseGet(null);
+    }
+
+    public List<Place> findAllPlaces(){
+        return placeRepository.findAll();
     }
     public void savePlace(Place place){
         placeRepository.save(place);

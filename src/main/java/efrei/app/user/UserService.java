@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
     @Autowired
@@ -15,6 +17,9 @@ public class UserService {
         return userRepository.findById(id).orElseGet(null);
     }
 
+    public List<User> findAllUsers(){
+        return userRepository.findAll();
+    }
     public void saveUser(User user){
         userRepository.save(user);
     }

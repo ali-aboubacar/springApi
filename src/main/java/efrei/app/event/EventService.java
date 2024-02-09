@@ -4,6 +4,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class EventService {
     private EventRepository eventRepository;
@@ -12,6 +14,9 @@ public class EventService {
         return eventRepository.findById(id).orElse(null);
     }
 
+    public List<Event> findAllEvents(){
+        return eventRepository.findAll();
+    }
     public void saveEvent(Event event){
         eventRepository.save(event);
     }

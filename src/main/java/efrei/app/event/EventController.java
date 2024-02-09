@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.swing.event.InternalFrameEvent;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/events")
@@ -17,6 +18,10 @@ public class EventController {
         eventService.saveEvent(event);
     }
 
+    @GetMapping
+    public List<Event> getAllEvents(){
+        return eventService.findAllEvents();
+    }
     @GetMapping("/{eventId}")
     public ResponseEntity<Event> findEventById(@PathVariable Integer eventId){
         Event event = eventService.getEventById(eventId);

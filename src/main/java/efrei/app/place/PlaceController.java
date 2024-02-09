@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/places")
 public class PlaceController {
@@ -17,6 +19,10 @@ public class PlaceController {
             return ResponseEntity.notFound().build();
         }
         return new ResponseEntity<>(place, HttpStatus.OK);
+    }
+    @GetMapping
+    public List<Place> getAllPLaces(){
+        return placeService.findAllPlaces();
     }
     @PostMapping
     public void createPlace(@RequestBody Place place){
