@@ -18,6 +18,11 @@ public class EventController {
         eventService.saveEvent(event);
     }
 
+    @PutMapping("/{eventId}")
+    public ResponseEntity<?> updateEvent(@PathVariable Integer eventId,
+                                         @RequestBody Event event){
+        return eventService.findAndUpdateEvent(eventId, event);
+    }
     @GetMapping
     public List<Event> getAllEvents(){
         return eventService.findAllEvents();

@@ -20,6 +20,23 @@ public class UserService {
     public List<User> findAllUsers(){
         return userRepository.findAll();
     }
+    public  ResponseEntity<?> findAndUpdateUser(Integer id, User user){
+        User userAModifier = userRepository.findById(id).orElseGet(null);
+        if(userAModifier != null){
+            if(user.getUserName() != null){
+                userAModifier.setUserName(user.getUserName());
+            }
+            if(user.getEmail() != null){
+                userAModifier.setEmail(user.getEmail());
+            }
+            if(user.getPassword() != null){
+                userAModifier.setPassword(user.getPassword());
+            }
+            userRepository.save(userAModifier);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
     public void saveUser(User user){
         userRepository.save(user);
     }

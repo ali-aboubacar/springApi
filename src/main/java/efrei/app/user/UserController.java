@@ -20,6 +20,12 @@ public class UserController {
     public void createUser(@RequestBody User user){
         userService.saveUser(user);
     }
+
+    @PutMapping("/{userId}")
+    public ResponseEntity<?> updateUser(@PathVariable Integer userId,
+                                        @RequestBody User user){
+        return userService.findAndUpdateUser(userId, user);
+    }
     @GetMapping("/{userId}")
     public ResponseEntity<User> findUserById(@PathVariable Integer userId){
         User user = userService.getUserById(userId);
