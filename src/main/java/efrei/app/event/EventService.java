@@ -35,7 +35,7 @@ public class EventService {
 
 
     public ResponseEntity<?> findAndUpdateEvent(Integer id, Event event){
-        Event eventAModifier = eventRepository.findById(id).orElseGet(null);
+        Event eventAModifier = eventRepository.findById(id).orElse(null);
         if(eventAModifier != null){
             if(event.getName() != null){
                 eventAModifier.setName(event.getName());

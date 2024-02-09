@@ -1,5 +1,6 @@
 package efrei.app.place;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import efrei.app.event.Event;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -23,5 +24,6 @@ public class Place {
     private String address;
 
     @OneToMany(mappedBy = "place", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Event> events;
 }

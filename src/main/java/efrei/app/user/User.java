@@ -1,5 +1,6 @@
 package efrei.app.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import efrei.app.ticket.Ticket;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -28,6 +29,7 @@ public class User {
     @Email
     private String email;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Ticket> tickets;
 }

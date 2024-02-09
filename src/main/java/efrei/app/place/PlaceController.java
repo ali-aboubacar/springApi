@@ -30,10 +30,10 @@ public class PlaceController {
                                          @RequestBody Place place){
         return placeService.findAndUpdatePLcae(placeId,place);
     }
-    @PostMapping
-    public void createPlace(@Valid @RequestBody Place place){
-        placeService.savePlace(place);
-    }
+//    @PostMapping
+//    public void createPlace(@Valid @RequestBody Place place){
+//        placeService.savePlace(place);
+//    }
 
     @DeleteMapping("/{placeId}")
     public ResponseEntity<?> deletePlace(@PathVariable Integer placeId){

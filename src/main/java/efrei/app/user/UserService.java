@@ -14,14 +14,14 @@ public class UserService {
     private UserRepository userRepository;
 
     public User getUserById(Integer id){
-        return userRepository.findById(id).orElseGet(null);
+        return userRepository.findById(id).orElse(null);
     }
 
     public List<User> findAllUsers(){
         return userRepository.findAll();
     }
     public  ResponseEntity<?> findAndUpdateUser(Integer id, User user){
-        User userAModifier = userRepository.findById(id).orElseGet(null);
+        User userAModifier = userRepository.findById(id).orElse(null);
         if(userAModifier != null){
             if(user.getUserName() != null){
                 userAModifier.setUserName(user.getUserName());

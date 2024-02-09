@@ -1,5 +1,6 @@
 package efrei.app.event;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import efrei.app.place.Place;
 import efrei.app.ticket.Ticket;
 import jakarta.persistence.*;
@@ -29,6 +30,7 @@ public class Event {
 
     @ManyToOne
     @JoinColumn(name = "place_id")
+    @JsonIgnore
     private Place place;
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
     private List<Ticket> tickets;

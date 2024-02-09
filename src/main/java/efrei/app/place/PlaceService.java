@@ -13,7 +13,7 @@ public class PlaceService {
     private PlaceRepository placeRepository;
 
     public Place getPlaceById(Integer id){
-        return placeRepository.findById(id).orElseGet(null);
+        return placeRepository.findById(id).orElse(null);
     }
 
     public List<Place> findAllPlaces(){
@@ -21,7 +21,7 @@ public class PlaceService {
     }
 
     public ResponseEntity<?> findAndUpdatePLcae(Integer id, Place place){
-        Place placeAModifier = placeRepository.findById(id).orElseGet(null);
+        Place placeAModifier = placeRepository.findById(id).orElse(null);
         if(placeAModifier != null){
             if(place.getName() != null){
                 placeAModifier.setName(place.getName());
