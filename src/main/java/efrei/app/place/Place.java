@@ -2,6 +2,7 @@ package efrei.app.place;
 
 import efrei.app.event.Event;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,8 +16,10 @@ public class Place {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @NotBlank
     private String name;
 
+    @NotBlank
     private String address;
 
     @OneToMany(mappedBy = "place", cascade = CascadeType.ALL)

@@ -1,5 +1,6 @@
 package efrei.app.user;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ public class UserController {
         return userService.findAllUsers();
     }
     @PostMapping
-    public void createUser(@RequestBody User user){
+    public void createUser(@Valid @RequestBody User user){
         userService.saveUser(user);
     }
 

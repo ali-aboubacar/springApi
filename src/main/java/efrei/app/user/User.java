@@ -2,6 +2,8 @@ package efrei.app.user;
 
 import efrei.app.ticket.Ticket;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,10 +18,14 @@ public class User {
     private Integer id;
 
 
+    @NotBlank
     private String userName;
 
+    @NotBlank
     private String password;
 
+    @NotBlank
+    @Email
     private String email;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)

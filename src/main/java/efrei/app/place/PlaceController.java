@@ -1,5 +1,6 @@
 package efrei.app.place;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +31,7 @@ public class PlaceController {
         return placeService.findAndUpdatePLcae(placeId,place);
     }
     @PostMapping
-    public void createPlace(@RequestBody Place place){
+    public void createPlace(@Valid @RequestBody Place place){
         placeService.savePlace(place);
     }
 

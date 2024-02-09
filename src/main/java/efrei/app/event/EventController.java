@@ -1,5 +1,6 @@
 package efrei.app.event;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +15,7 @@ public class EventController {
     @Autowired
     private EventService eventService;
     @PostMapping
-    public void createEvent(@RequestBody Event event){
+    public void createEvent(@Valid @RequestBody Event event){
         eventService.saveEvent(event);
     }
 

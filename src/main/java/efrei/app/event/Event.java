@@ -3,6 +3,7 @@ package efrei.app.event;
 import efrei.app.place.Place;
 import efrei.app.ticket.Ticket;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,7 +20,9 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @NotBlank
     private String name;
+
 
     private LocalDate date;
 
