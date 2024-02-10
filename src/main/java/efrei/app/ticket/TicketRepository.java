@@ -10,5 +10,7 @@ import java.util.Optional;
 
 public interface TicketRepository extends CrudRepository<Ticket, Integer> {
     List<Ticket> findAll();
+
+    List<Ticket> findByUser_Id(Integer userId);
     Boolean existsByUserAndEvent_Date(User user, LocalDate eventDate);
 }

@@ -26,6 +26,9 @@ public class TicketService {
     public List<Ticket> findAllTickets(){
         return ticketRepository.findAll();
     }
+    public List<Ticket> findAllTicketsByUser(Integer id){
+        return ticketRepository.findByUser_Id(id);
+    }
     public void buyTicket(User user, Event event){
         LocalDate eventDate = event.getDate();
 

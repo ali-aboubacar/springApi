@@ -30,6 +30,10 @@ public class TicketController {
     public List<Ticket> getAllTIckects(){
         return ticketService.findAllTickets();
     }
+    @GetMapping("user/{userId}")
+    public List<Ticket> getAllTicketsOfUser(@PathVariable Integer userId){
+        return ticketService.findAllTicketsByUser(userId);
+    }
     @PostMapping("/buy")
     public ResponseEntity<String> buyTicket(@RequestParam Integer userId,
                                             @RequestParam Integer eventId){
